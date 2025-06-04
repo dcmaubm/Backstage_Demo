@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: crear-nodejs
+  description: Plantilla Cookiecutter para crear un servicio Node.js con Express
+  tags:
+    - template
+    - nodejs
+    - express
+spec:
+  type: template
+  lifecycle: experimental
+  owner: equipo-backend

@@ -1,6 +1,0 @@
-site_name: Documentación de Mi Componente
-nav:
-  - Indice: ./index.md
-  - Diseño: ./1-1Disenio.md
-  - Requisitos: ./1-2Integraciones.md
-docs_dir: docs

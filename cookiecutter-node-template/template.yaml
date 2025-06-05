@@ -28,7 +28,7 @@ spec:
       name: Generar código con Cookiecutter
       action: cookiecutter:template
       input:
-        url: "https://github.com/dcmaubm/Backstage_Demo/archive/refs/heads/template.zip"
+        url: ./cookiecutter-node-template
         values:
           project_name: ${{ parameters.project_name }}
           description: ${{ parameters.description }}
@@ -38,7 +38,7 @@ spec:
       name: Publicar en GitHub
       action: publish:github
       input:
-        repoUrl: github.com/tu-org/${{ parameters.project_name }}
+        repoUrl: github.com/dcmaubm/${{ parameters.project_name }}
         defaultBranch: main
         description: ${{ parameters.description }}
 

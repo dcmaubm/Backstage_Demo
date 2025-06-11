@@ -1,0 +1,61 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: springboot-basic-template
+  title: Spring Boot Basic Template
+  description: Plantilla basica para generar un proyecto Spring Boot con Maven
+  tags:
+    - java
+    - spring
+    - maven
+spec:
+  owner: user:default/guest
+  type: service
+
+  parameters:
+    - title: Informacion del Proyecto
+      required:
+        - component_id
+      properties:
+        component_id:
+          title: Nombre del componente
+          type: string
+          description: Nombre del proyecto a crear
+        description:
+          title: Descripcion
+          type: string
+          description: Breve descripción del proyecto
+          default: Proyecto generado con Spring Boot
+
+  steps:
+    - id: fetch-base
+      name: Obtener codigo base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          name: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+
+    - id: publish
+      name: Publicar en Git
+      action: publish:github
+      input:
+        repoUrl: github.com?repo=${{ parameters.component_id }}&owner=TU_USUARIO
+        repoVisibility: public
+        defaultBranch: main
+        description: ${{ parameters.description }}
+
+    - id: register
+      name: Registrar componente en Backstage
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+
+  output:
+    links:
+      - title: Repositorio en GitHub
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Ver en Backstage
+        url: ${{ steps['register'].output.entityRef }}

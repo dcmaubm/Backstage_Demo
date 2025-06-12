@@ -41,7 +41,7 @@ spec:
       name: Publicar en Git
       action: publish:github
       input:
-        repoUrl: github.com?repo=${{ parameters.component_id }}&owner=TU_USUARIO
+        repoUrl: github.com?repo=${{ parameters.component_id }}&owner=dcmaubm
         repoVisibility: public
         defaultBranch: main
         description: ${{ parameters.description }}

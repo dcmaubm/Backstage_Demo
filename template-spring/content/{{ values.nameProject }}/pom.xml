@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example-test</groupId>
-	<artifactId>${{ values.name }}</artifactId>
+	<artifactId>${{ values.nameProject }}</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>${{ values.name }}</name>
+	<name>${{ values.nameProject }}</name>
 	<description>${{ values.description }}</description>
 	<url/>
 	<licenses>

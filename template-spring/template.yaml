@@ -16,11 +16,16 @@ spec:
     - title: Informacion del Proyecto
       required:
         - component_id
+        - nameProject
       properties:
         component_id:
           title: Nombre del componente
           type: string
           description: Nombre del proyecto a crear
+        nameProject:
+          title: Nombre del proyecto
+          type: string
+          description: Nombre que tendrá el proyecto en los archivos generados
         description:
           title: Descripcion
           type: string
@@ -36,6 +41,7 @@ spec:
         values:
           name: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
+          nameProject: ${{ parameters.nameProject }}
 
     - id: publish
       name: Publicar en Git
